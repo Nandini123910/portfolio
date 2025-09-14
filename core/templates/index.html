@@ -1,0 +1,308 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>{{ about.name }} - Portfolio</title>
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;500;700&family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+  <!-- Custom Theme Overrides -->
+  <link href="{% static 'assets/css/custom.css' %}" rel="stylesheet">
+</head>
+
+<body class="index-page">
+
+  <!-- Header -->
+  <header id="header" class="header dark-background d-flex flex-column">
+    <i class="header-toggle d-xl-none bi bi-list"></i>
+
+    <div class="profile-img">
+      <img src="{{ about.profile_image.url }}" alt="Profile Image" class="img-fluid rounded-circle">
+    </div>
+
+    <a href="#hero" class="logo d-flex align-items-center justify-content-center">
+      <h1 class="sitename">{{ about.name }}</h1>
+    </a>
+
+    <div class="social-links text-center">
+      <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+      <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+      <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+      <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+    </div>
+
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i>Home</a></li>
+        <li><a href="#about"><i class="bi bi-person navicon"></i> About</a></li>
+        <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
+        <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
+        <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+      <img src="{{ about.profile_image.url }}" alt="Profile Image" class="hero-bg">
+      <div class="overlay"></div>
+      <div class="container hero-content">
+        <h2>{{ about.name }}</h2>
+        <p>I'm <span class="typed">{{ about.title }}</span></p>
+        <div class="mt-4">
+          <a href="#contact" class="btn-cta primary"><i class="bi bi-send"></i> Hire Me</a>
+          <a href="#resume" class="btn-cta ghost"><i class="bi bi-file-earmark-text"></i> View Resume</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+      <div class="container section-title">
+        <h2>About</h2>
+        {% if about %}
+          <p>{{ about.description }}</p>
+        {% else %}
+          <p>About information not available.</p>
+        {% endif %}
+      </div>
+
+      <div class="container">
+        <div class="row gy-4 justify-content-center">
+          <div class="col-lg-4">
+            {% if about.profile_image %}
+              <img src="{{ about.profile_image.url }}" class="img-fluid" alt="{{ about.title }}">
+            {% else %}
+              <img src="{% static 'assets/img/default-profile.png' %}" class="img-fluid" alt="Default Profile">
+            {% endif %}
+          </div>
+
+          <div class="col-lg-8 content">
+            {% if about %}
+              <h2>{{ about.title }}</h2>
+              <div class="row">
+                <div class="col-lg-6">
+                  <ul>
+                    <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>{{ about.birthday }}</span></li>
+                    <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>{{ about.website }}</span></li>
+                    <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>{{ about.phone }}</span></li>
+                    <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>{{ about.city }}</span></li>
+                  </ul>
+                </div>
+                <div class="col-lg-6">
+                  <ul>
+                    <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>{{ about.age }}</span></li>
+                    <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>{{ about.degree }}</span></li>
+                    <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>{{ about.email }}</span></li>
+                    <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>{{ about.freelance }}</span></li>
+                  </ul>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" >
+        <h2 style="color: black;">Skills</h2>
+        
+      </div><!-- End Section Title -->
+      
+
+      <div class="container"  data-aos-delay="100">
+
+        <div class="row gy-4 skills-content skills-animation">
+          {% for i in skills %}
+
+          <div class="col-lg-6">
+            <div class="service-item">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <span class="skill fw-semibold">{{ i.name }}</span>
+                <span class="badge-accent">{{ i.percentage }}%</span>
+              </div>
+
+              <div class="progress mb-1">
+                <div class="progress-bar" role="progressbar" aria-valuenow="{{ i.percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+            
+      {% endfor %}
+        </div>
+        
+
+      </div>
+
+    </section><!-- /Skills Section -->
+
+    <!-- Resume Section -->
+    <section id="resume" class="resume section">
+      <div class="container section-title" >
+        <h2>Resume</h2>
+        <p>{{ about.description }}</p>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6"    data-aos-delay="100">
+            <h3 class="resume-title">Education</h3>
+            {% for edu in education %}
+              <div class="resume-item">
+                <h4>{{ edu.degree }}</h4>
+                <h5>{{ edu.start_year }} - {{ edu.end_year }}</h5>
+                <p><em>{{ edu.institution }}</em></p>
+                <p>{{ edu.description }}</p>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="col-lg-6"    data-aos-delay="200">
+            <h3 class="resume-title">Experience</h3>
+            {% for exp in experience %}
+              <div class="resume-item">
+                <h4>{{ exp.title }}</h4>
+                <h5>{{ exp.start_year }} - {{ exp.end_year }}</h5>
+                <p><em>{{ exp.company }}</em></p>
+                <ul>
+                  {% for detail in exp.description.splitlines %}
+                  <li>{{ detail }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services section">
+      <div class="container section-title"   >
+        <h2>Services</h2>
+        <p>{{ about.description }}</p>
+      </div>
+      <div class="container">
+        <div class="row gy-4">
+          {% for srv in services %}
+          <div class="col-lg-4 col-md-6 service-item d-flex"    data-aos-delay="{{ forloop.counter0|add:'100' }}">
+            <div class="icon flex-shrink-0"><i class="{{ srv.icon_class }}"></i></div>
+            <div>
+              <h4 class="title">{{ srv.title }}</h4>
+              <p class="description">{{ srv.description }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+      <div class="container section-title"   >
+        <h2>Contact</h2>
+        <p>{{ about.description }}</p>
+      </div>
+      <div class="container"    data-aos-delay="100">
+        <div class="row gy-4">
+          <div class="col-lg-5">
+            <div class="info-wrap">
+              <div class="info-item d-flex"    data-aos-delay="200">
+                <i class="bi bi-geo-alt flex-shrink-0"></i>
+                <div>
+                  <h3>Address</h3>
+                  <p>Bholaram Indore Madhya Pradesh India</p>
+                </div>
+              </div>
+              <div class="info-item d-flex"    data-aos-delay="300">
+                <i class="bi bi-telephone flex-shrink-0"></i>
+                <div>
+                  <h3>Call Us</h3>
+                  <p>{{ about.phone }}</p>
+                </div>
+              </div>
+              <div class="info-item d-flex"    data-aos-delay="400">
+                <i class="bi bi-envelope flex-shrink-0"></i>
+                <div>
+                  <h3>Email Us</h3>
+                  <p>{{ about.email }}</p>
+                </div>
+              </div>
+              <iframe src="{{ about.map_embed_url }}" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <form action="{% url 'contact' %}" method="post" class="php-email-form">
+              {% csrf_token %}
+              <div class="row gy-4">
+                <div class="col-md-6">
+                  <label for="name">Your Name</label>
+                  <input type="text" name="name" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="email">Your Email</label>
+                  <input type="email" name="email" class="form-control" required>
+                </div>
+                <div class="col-md-12">
+                  <label for="subject">Subject</label>
+                  <input type="text" name="subject" class="form-control" required>
+                </div>
+                <div class="col-md-12">
+                  <label for="message">Message</label>
+                  <textarea name="message" class="form-control" rows="10" required></textarea>
+                </div>
+                <div class="col-md-12 text-center">
+                  <button type="submit">Send Message</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer id="footer" class="footer position-relative light-background">
+    <div class="container text-center">
+      <p>© {{ about.name }} | All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/typed.js/typed.umd.js' %}"></script>
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+</html>

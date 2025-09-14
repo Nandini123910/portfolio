@@ -1,0 +1,111 @@
+/* Custom Theme Overrides — iPortfolio Redesign
+   Author: Zencoder
+   Purpose: Visual refresh with modern typography, vibrant accents, glass header, and refined components.
+*/
+
+/* Fonts */
+:root {
+  --default-font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --heading-font: "Outfit", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --nav-font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Colors */
+  --background-color: #0b1020; /* deep blue charcoal */
+  --surface-color: rgba(255, 255, 255, 0.06);
+  --default-color: #e6ecf1; 
+  --heading-color: #ffffff;
+  --accent-color: #7c5cff; /* solid accent used for text/icon */
+  --accent-2: #22d3ee; /* cyan */
+  --accent-gradient: linear-gradient(135deg, #7c5cff 0%, #4f46e5 48%, #22d3ee 100%);
+  --ring-color: rgba(124, 92, 255, 0.35);
+}
+
+/* Global */
+body {
+  letter-spacing: 0.2px;
+}
+
+a { color: var(--accent-2); }
+a:hover { color: #9bdff2; }
+
+h1,h2,h3,h4,h5,h6 { letter-spacing: 0.3px; }
+
+/* Header — glassmorphism sidebar */
+.header {
+  background: linear-gradient(180deg, rgba(10,14,28,0.85), rgba(10,14,28,0.65));
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+.header .profile-img img { border-color: rgba(255,255,255,0.14); }
+.header .social-links a { background: rgba(255,255,255,0.06); color: #dbe6ee; }
+.header .social-links a:hover { background: var(--accent-gradient); color: #fff; }
+.header .logo h1 { color: #fff; }
+
+/* Nav */
+.navmenu a { color: #c3c9d4; }
+.navmenu a:hover, .navmenu .active { color: #fff; }
+.navmenu a:hover .navicon, .navmenu .active .navicon { color: #b7a6ff; }
+
+/* Hero */
+.hero.section {
+  position: relative;
+  min-height: 90vh;
+}
+.hero .hero-bg { filter: brightness(0.6) saturate(1.1); object-fit: cover; }
+.hero .overlay { position:absolute; inset:0; background: radial-gradient(60% 60% at 30% 20%, rgba(124,92,255,0.25) 0%, rgba(34,211,238,0.18) 40%, rgba(11,16,32,0.75) 100%); }
+.hero .hero-content { position: relative; z-index: 2; text-align: center; padding-top: 15vh; padding-bottom: 10vh; }
+.hero h2 { font-size: clamp(32px, 6vw, 56px); font-weight: 800; }
+.hero p { font-size: clamp(16px, 2.2vw, 22px); opacity: 0.95; }
+
+/* CTA Buttons */
+.btn-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 18px; border-radius: 12px; font-weight: 600; letter-spacing: 0.2px;
+  border: 1px solid transparent; transition: all .25s ease;
+}
+.btn-cta.primary { background: var(--accent-gradient); color: #fff; box-shadow: 0 8px 24px rgba(124,92,255,.25); }
+.btn-cta.primary:hover { transform: translateY(-1px); box-shadow: 0 12px 30px rgba(124,92,255,.35); }
+.btn-cta.ghost { background: rgba(255,255,255,0.06); color: #e6ecf1; border-color: rgba(255,255,255,0.14); }
+.btn-cta.ghost:hover { background: rgba(255,255,255,0.12); }
+
+/* Sections */
+.section-title h2 { position: relative; display: inline-block; padding-bottom: 6px; }
+.section-title h2:after { content: ""; position: absolute; left: 50%; transform: translateX(-50%); bottom: -4px; width: 64px; height: 3px; background: var(--accent-gradient); border-radius: 2px; }
+
+/* Cards & Surfaces */
+.light-background, .dark-background { background: transparent; }
+.section .container, .service-item, .resume-item, .info-wrap {
+  background: var(--surface-color);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+.section .container { padding-top: 20px; padding-bottom: 20px; }
+
+/* Skills */
+.progress { background: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden; }
+.progress-bar { background: var(--accent-gradient) !important; box-shadow: inset 0 0 12px rgba(255,255,255,0.15); }
+.skill .val { background: rgba(255,255,255,0.08); padding: 2px 8px; border-radius: 8px; font-weight: 600; }
+
+/* Services */
+.service-item { padding: 18px; }
+.service-item .icon { background: rgba(255,255,255,0.08); border-radius: 12px; width: 56px; height: 56px; display: inline-flex; align-items:center; justify-content:center; }
+.service-item .icon i { color: #cfd8ff; }
+.service-item .title { margin-top: 6px; margin-bottom: 6px; }
+
+/* Contact */
+.php-email-form input, .php-email-form textarea { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #eaf2f8; border-radius: 12px; }
+.php-email-form input:focus, .php-email-form textarea:focus { outline: none; border-color: #9aa7ff; box-shadow: 0 0 0 4px var(--ring-color); }
+.php-email-form button { background: var(--accent-gradient); color: #fff; border: none; border-radius: 12px; padding: 12px 18px; font-weight: 700; letter-spacing: 0.3px; }
+.php-email-form button:hover { filter: brightness(1.05); transform: translateY(-1px); }
+
+/* Footer */
+.footer { background: transparent; border-top: 1px solid rgba(255,255,255,0.08); }
+
+/* Utilities */
+.badge-accent { background: var(--accent-gradient); color: #fff; border-radius: 999px; padding: 6px 10px; font-size: 12px; font-weight: 700; }
+
+/* Responsive tweaks */
+@media (max-width: 1199px) {
+  .header .header-toggle { background: var(--accent-gradient); }
+}
